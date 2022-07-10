@@ -25,14 +25,14 @@
   </div>
 
   <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
-  <script>
+  <script defer>
     const tabs = {
-      all: 'all',
-      logo: 'logo',
-      intro: 'intro',
-      exp: 'exp',
-      pres: 'pres',
-      adv: 'adv',
+      all: 'Все',
+      logo: 'Логотип',
+      intro: 'Интро',
+      exp: 'Эксплейнер',
+      pres: 'Видеопрезентация',
+      adv: 'Рекламный ролик',
     }
 
     const contentArr = [
@@ -159,22 +159,13 @@
 
     ];
 
-    const parent = document.querySelector(
-      ".wpb_raw_code.wpb_content_element.wpb_raw_html > .wpb_wrapper"
-    );
-    const videoEl = document.querySelector(".videoBlock");
-
-    const parentWidth = parent.offsetWidth;
-    const videoElWidth = videoEl.offsetWidth;
-    const columns = Math.floor(parentWidth / videoElWidth);
-    const maxLoadCount = columns * 2 - 1;
-    let loadedItems = 0;
-
     const loadButton = document.querySelector(".more_projects__button");
     const loadMoreContainer = document.querySelector(".more_projects");
 
     // let prevCurTab = document.querySelector('.vc_tta-tab.vc_active .vc_tta-title-text')?.innerHTML || 'Все'
     let prevCurTab = document.querySelector('.vc_tta-tab.vc_active .vc_tta-title-text').innerHTML
+
+    let loadedItems = 0;
 
     const setCurTabListeners = () => {
       const allTabs = document.querySelectorAll('.vc_tta-tab a')
@@ -183,28 +174,48 @@
           const curTab = element.querySelector('.vc_tta-title-text').innerHTML
           console.log(prevCurTab, curTab);
           if (prevCurTab != curTab) {
+            const videoElAll = document.querySelectorAll(".vc_tta-panel.vc_active .videoBlock");
+            for (let i = 0; i < videoElAll.length; i++) {
+              i != 0 && videoElAll[i].remove()
+            }
             prevCurTab = curTab
             loadedItems = 0
-            loadContent(loadedItems, maxLoadCount, curTab)
+            // console.log('loadedItems', loadedItems);
+            loadContent(loadedItems, curTab)
+            
           }
         })
       });
     }
 
-    function loadContent(start, maxLoadCount, targetTab) {
+    
 
-      const videoElAll = document.querySelectorAll(".videoBlock");
+    function loadContent(start, targetTab) {
+
+      const parent = document.querySelector(".vc_tta-panel.vc_active .wpb_wrapper");
+      const videoEl = document.querySelector(".vc_tta-panel.vc_active .videoBlock");
+
+      parent.style.border = "1px solid red"
+
+      console.log('parent', parent);
+
+      const parentWidth = parent.offsetWidth;
+      const videoElWidth = videoEl.offsetWidth;
+      const columns = Math.floor(parentWidth / videoElWidth);
+      const maxLoadCount = columns * 2 - 1;
+
+      const videoElAll = document.querySelectorAll(".vc_tta-panel.vc_active .videoBlock");
       const lastVideo = videoElAll[videoElAll.length - 1]
-      const sourceAll = document.querySelectorAll(".source");
+      const sourceAll = document.querySelectorAll(".vc_tta-panel.vc_active .source");
       const lastSource = sourceAll[sourceAll.length - 1]
 
-      const renderArr = contentArr.filter(el => el.tab == targetTab)
+      const renderArr = contentArr.filter(el => targetTab === tabs.all ? el : tabs[el.tab] == targetTab)
 
       for (let i = start; i < start + maxLoadCount + 1; i++) {
-        if (contentArr[i]) {
+        if (renderArr[i]) {
           // const source = document.querySelector("source");      
           // console.log(i);
-          lastSource.src = contentArr[i].src;
+          lastSource.src = renderArr[i].src;
           lastSource.id = i
           // console.log(lastSource.src);
           const clone = lastVideo.cloneNode(true);
@@ -212,21 +223,25 @@
           loadedItems++;
 
         }
-        if (loadedItems >= contentArr.length) {
+        // console.log("loadedItems, renderArr.length", loadedItems, renderArr.length);
+        if (loadedItems >= renderArr.length) {
           loadMoreContainer.classList.add('hidden')
-        }
+        } else {loadMoreContainer.classList.remove('hidden')}
       }
+
+      if (start == 0) {
+        videoEl.remove()
+      }
+
     }
 
     setCurTabListeners()
 
-    loadContent(loadedItems, maxLoadCount);
+    loadContent(loadedItems, prevCurTab);
 
     loadButton.addEventListener("click", () => {
-      loadContent(loadedItems, maxLoadCount);
+      loadContent(loadedItems, prevCurTab);
     });
-
-    videoEl.remove()
 
       // const videoElAll = document.querySelectorAll(".videoBlock");
       // console.log('videoElAll', videoElAll);
