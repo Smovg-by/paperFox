@@ -1,4 +1,45 @@
-.wpb_wrapper {
+.vc_tta-tabs {
+  max-width: 1920px;
+  margin: 50px auto 0 auto;
+}
+
+.vc_tta-tabs-container {
+  border: none;
+  margin: 0;
+}
+
+.vc_tta-tabs-list {
+  display: flex !important;
+  justify-content: center;
+  gap: 3vw;
+}
+
+.vc_tta-tab {
+  border-top: 2px solid transparent;
+}
+
+.vc_tta.vc_general .vc_tta-tab {
+  width: 135px;
+}
+
+.vc_tta-tab.vc_active {
+  border-top: 2px solid #666666;
+}
+
+.vc_tta-tab:hover {
+  border-top: 2px solid #666666;
+}
+
+.vc_tta.vc_general .vc_tta-tab > a {
+  padding: 14px 0 !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+/* video block */
+
+.wpb_raw_code.wpb_content_element.wpb_raw_html > .wpb_wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -6,14 +47,12 @@
 
 .video {
   width: 100%;
-  border: 1px solid black;
 }
 .videoBlock {
   display: table;
   width: auto;
   position: relative;
-  /* width: 50%; */
-  border: 1px solid black;
+  padding: 10px;
 }
 .playpause {
   width: 100%;
@@ -39,13 +78,15 @@
 .more_projects__title {
   text-align: center;
   text-transform: uppercase;
+  font: inherit;
+  font-size: 20px;
 }
 
 .more_projects__button {
   cursor: pointer;
-  height: 50px;
-  width: 50px;
-  background-image: url(./img/down-arrow.svg);
-  background-size: 50px 50px !important;
-  margin: 0 auto;
+  height: 35px;
+  width: 60px;
+  background-image: url(https://paperfox.studio/wp-content/uploads/2022/07/arrow-down-1.png);
+  background-size: 60px 35px !important;
+  margin: 0 auto 14px auto;
 }

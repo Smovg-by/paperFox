@@ -24,161 +24,209 @@
     <div class="more_projects__button"></div>
   </div>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
   <script>
+    const tabs = {
+      all: 'all',
+      logo: 'logo',
+      intro: 'intro',
+      exp: 'exp',
+      pres: 'pres',
+      adv: 'adv',
+    }
+
     const contentArr = [
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/CM_1920x1080_sound_v015.mp4",
+        tab: 'logo',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/Sun_school_logo_1080x1920_7s.mp4",
+        tab: 'intro',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/Chiken_1080x1920.mp4",
+        tab: 'exp',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/Alena_Shakh_intro_color2_psy.mp4",
+        tab: 'pres',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2019/12/Kygo-Happy-Now-ft.-Sandro-Cavazza-Official-Video.mp4",
+        tab: 'adv',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2019/12/Avicii-Waiting-For-Love.mp4",
+        tab: 'logo',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2020/01/video1.mp4",
+        tab: 'intro',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2019/11/Death_to_Stock_Get-Down_1_x264.webm",
+        tab: 'exp',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/CM_1920x1080_sound_v015.mp4",
+        tab: 'pres',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/Sun_school_logo_1080x1920_7s.mp4",
-      },
-      {
-        src: "https://paperfox.studio/wp-content/uploads/2022/05/Chiken_1080x1920.mp4",
-      },
-      {
-        src: "https://paperfox.studio/wp-content/uploads/2022/05/Alena_Shakh_intro_color2_psy.mp4",
-      },
-      {
-        src: "https://paperfox.studio/wp-content/uploads/2019/12/Kygo-Happy-Now-ft.-Sandro-Cavazza-Official-Video.mp4",
-      },
-      {
-        src: "https://paperfox.studio/wp-content/uploads/2019/12/Avicii-Waiting-For-Love.mp4",
-      },
-      {
-        src: "https://paperfox.studio/wp-content/uploads/2020/01/video1.mp4",
-      },
-      {
-        src: "https://paperfox.studio/wp-content/uploads/2019/11/Death_to_Stock_Get-Down_1_x264.webm",
+        tab: 'adv',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/CM_1920x1080_sound_v015.mp4",
+        tab: 'logo',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/Sun_school_logo_1080x1920_7s.mp4",
+        tab: 'intro',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/Chiken_1080x1920.mp4",
+        tab: 'exp',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/Alena_Shakh_intro_color2_psy.mp4",
+        tab: 'pres',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2019/12/Kygo-Happy-Now-ft.-Sandro-Cavazza-Official-Video.mp4",
+        tab: 'adv',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2019/12/Avicii-Waiting-For-Love.mp4",
+        tab: 'logo',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2020/01/video1.mp4",
+        tab: 'intro',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2019/11/Death_to_Stock_Get-Down_1_x264.webm",
+        tab: 'exp',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/CM_1920x1080_sound_v015.mp4",
+        tab: 'pres',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/Sun_school_logo_1080x1920_7s.mp4",
+        tab: 'adv',
+      },
+      {
+        src: "https://paperfox.studio/wp-content/uploads/2022/05/CM_1920x1080_sound_v015.mp4",
+        tab: 'logo',
+      },
+      {
+        src: "https://paperfox.studio/wp-content/uploads/2022/05/Sun_school_logo_1080x1920_7s.mp4",
+        tab: 'intro',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/Chiken_1080x1920.mp4",
+        tab: 'exp',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2022/05/Alena_Shakh_intro_color2_psy.mp4",
+        tab: 'pres',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2019/12/Kygo-Happy-Now-ft.-Sandro-Cavazza-Official-Video.mp4",
+        tab: 'adv',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2019/12/Avicii-Waiting-For-Love.mp4",
+        tab: 'logo',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2020/01/video1.mp4",
+        tab: 'intro',
       },
       {
         src: "https://paperfox.studio/wp-content/uploads/2019/11/Death_to_Stock_Get-Down_1_x264.webm",
+        tab: 'exp',
       },
+      {
+        src: "https://paperfox.studio/wp-content/uploads/2022/05/CM_1920x1080_sound_v015.mp4",
+        tab: 'pres',
+      },
+      {
+        src: "https://paperfox.studio/wp-content/uploads/2022/05/Sun_school_logo_1080x1920_7s.mp4",
+        tab: 'adv',
+      },
+
     ];
 
     const parent = document.querySelector(
       ".wpb_raw_code.wpb_content_element.wpb_raw_html > .wpb_wrapper"
     );
-
     const videoEl = document.querySelector(".videoBlock");
-
-    console.log('videoEl', videoEl);
 
     const parentWidth = parent.offsetWidth;
     const videoElWidth = videoEl.offsetWidth;
-
     const columns = Math.floor(parentWidth / videoElWidth);
-    const maxLoadCount = columns * 3 - 1;
+    const maxLoadCount = columns * 2 - 1;
     let loadedItems = 0;
 
     const loadButton = document.querySelector(".more_projects__button");
     const loadMoreContainer = document.querySelector(".more_projects");
 
-    function loadContent(start, maxLoadCount) {
+    // let prevCurTab = document.querySelector('.vc_tta-tab.vc_active .vc_tta-title-text')?.innerHTML || 'Все'
+    let prevCurTab = document.querySelector('.vc_tta-tab.vc_active .vc_tta-title-text').innerHTML
+
+    const setCurTabListeners = () => {
+      const allTabs = document.querySelectorAll('.vc_tta-tab a')
+      allTabs.forEach(element => {
+        element.addEventListener('click', () => {
+          const curTab = element.querySelector('.vc_tta-title-text').innerHTML
+          console.log(prevCurTab, curTab);
+          if (prevCurTab != curTab) {
+            prevCurTab = curTab
+            loadedItems = 0
+            loadContent(loadedItems, maxLoadCount, curTab)
+          }
+        })
+      });
+    }
+
+    function loadContent(start, maxLoadCount, targetTab) {
 
       const videoElAll = document.querySelectorAll(".videoBlock");
       const lastVideo = videoElAll[videoElAll.length - 1]
       const sourceAll = document.querySelectorAll(".source");
       const lastSource = sourceAll[sourceAll.length - 1]
 
+      const renderArr = contentArr.filter(el => el.tab == targetTab)
+
       for (let i = start; i < start + maxLoadCount + 1; i++) {
         if (contentArr[i]) {
           // const source = document.querySelector("source");      
-          console.log(i);
+          // console.log(i);
           lastSource.src = contentArr[i].src;
           lastSource.id = i
-          console.log(lastSource.src);
+          // console.log(lastSource.src);
           const clone = lastVideo.cloneNode(true);
           parent.appendChild(clone);
           loadedItems++;
+
         }
         if (loadedItems >= contentArr.length) {
           loadMoreContainer.classList.add('hidden')
         }
-
       }
     }
 
-    loadContent(0, maxLoadCount);
+    setCurTabListeners()
+
+    loadContent(loadedItems, maxLoadCount);
 
     loadButton.addEventListener("click", () => {
       loadContent(loadedItems, maxLoadCount);
     });
 
-    // console.log(contentArr.length)
-    // console.log('count', loadedItems)
-
     videoEl.remove()
-
 
       // const videoElAll = document.querySelectorAll(".videoBlock");
       // console.log('videoElAll', videoElAll);
